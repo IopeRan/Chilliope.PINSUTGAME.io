@@ -1,0 +1,62 @@
+:roat {
+    box-sizing: border-box;
+}
+
+html, body, * {
+    margin: 0;
+    padding: 0;
+}
+
+@font-face {
+    font-family: 'PSDP';
+    src: url(/font/Press_Start_2P.zip);
+}
+
+#app {
+    height: 100vh;
+}
+
+.neon {
+    font-family: PSDP;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column  ;
+    margin: 0 auto;
+    border: 3px solid blueviolet;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+.games {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 20px;
+    padding: 30px;
+}
+
+.option {
+    width: 30%;
+    margin: 15px 20px;
+    padding: 30px;
+    text-align: center;
+    font-size: 300%;
+    background-color: cyan;
+}
+
+.option:hover {
+    cursor: pointer;
+    background-color: blue;
+    transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    transform: scale(110%);
+    -webkit-transform: scale(110%);
+    -moz-transform: scale(110%);
+    -ms-transform: scale(110%);
+    -o-transform: scale(110% );
+    -webkit-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    -moz-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    -ms-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;
+    -o-transition: cubic-bezier(0.215, 0.610, 0.355, 1) ease-in-out;   
+}

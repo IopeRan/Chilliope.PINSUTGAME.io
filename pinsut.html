@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width-device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pinsut.css"/>
+    <title>Pinsut Games</title>
+</head>
+<body>
+    <div id="app">
+        <div class="neon">
+            <link rel="preconnect" href="https://fonts.google.com/specimen/Press+Start+2P#styles" /><h1 class="title">BATTLE FINGER</h1>
+            <h1 id="inGame"></h1>
+            <h1 id="result"></h1>
+        </div>
+        <div class="games">
+            <div class="option" onclick="pickOption('🧍')">🧍</div>
+            <div class="option" onclick="pickOption('🐘')">🐘</div>
+            <div class="option" onclick="pickOption('🐜')">🐜</div>
+        </div>   
+    </div>
+
+    <script>
+        class Start{
+            constructor(){
+                this.playerName = "dirimu"
+                this.botName = "Erka-kun"
+                this.playerOption;
+                this.botOption;
+                this.winner = ""
+
+            }
+
+            get getBotOption() {
+                return this.botOption;
+            }
+
+            set setBotOption(option) {
+                this.botOption = option;
+            }
+
+            get getplayerOption () {
+                return this.playerOption  
+            }
+
+            set setplayerOption (option) {
+                this.playerOption = option;
+            }
+
+            botBrain () {
+                const option = ["🧍", "🐘", "🐜"];
+                const bot = option[Math.floor(Math.random() * option.length)];
+                return bot;
+            }
+
+            winCalculation() {
+                if(this.botOption == "🧍" && this.playerOption == "🐘" ){
+                    return this.winner= this.playerName
+                }else if (this.botOption == "🧍" && this.playerOption == "🐜" ){
+                    return this.winner= this.botName
+                }else if (this.botOption == "🐘" && this.playerOption == "🧍" ){
+                    return this.winner= this.botName
+                }else if (this.botOption == "🐘" && this.playerOption == "🐜" ){
+                    return this.winner= this.playerName
+                }else if (this.botOption == "🐜" && this.playerOption == "🧍" ){
+                    return this.winner= this.playerName
+                }else if (this.botOption == "🐜" && this.playerOption == "🐘" ){
+                    return this.winner= this.botName
+
+                }else{
+                    return this.winner = "SERI"
+                }
+            }
+
+            matchResult() {
+                if(this.winner != "SERI"){
+                    return `${this.winner} MENANG!`;
+                }else {
+                    return `WUKWUK ${this.winner}, GAK ADA YANG MENANG WKWK` ;
+                }
+            }
+
+        }
+
+         function pickOption(params) {
+             const start = new Start();
+             start.setplayerOption = params; 
+             start.setBotOption = start.botBrain();
+             start.winCalculation();
+             console.log(`player: ${start.getplayerOption} VS bot: ${start.getBotOption}`) 
+             console.log("hasil akhir: ", start.matchResult())
+
+             const inGame = document.getElementById("inGame");
+             const result = document.getElementById("result");
+             
+             inGame.textContent = "..."
+             result.textContent = "..."
+             
+             setTimeout(() => {
+                 inGame.textContent = `${start.getplayerOption} VS ${start.getBotOption}`
+                 result.textContent = start.matchResult();
+             }, 2000);
+         }
+
+    </script>
+
+</body>
+</html>
